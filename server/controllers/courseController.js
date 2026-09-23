@@ -1,10 +1,10 @@
-function getCourses(req,res){
+async function getCourses(req,res){
 
 }
-function createCourses(req,res){
+async function createCourses(req,res){
 
 }
-function deleteCourses(req,res){
+async function deleteCourses(req,res){
 
 }
 function updateCourses(req,res){

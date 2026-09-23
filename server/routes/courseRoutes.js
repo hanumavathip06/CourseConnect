@@ -1,18 +1,16 @@
 const express=require("express")
 const{protect,authorize}=require("../middleware/authMiddleware")
-const{getCourses,createCourses,updateCourses,deleteCourses}=require("../controllers/courseController")
+const{getCourses,createCourses,updateCourses,deleteCourses, getCourseById}=require("../controllers/courseController")
 
 const courseRoute=express.Router()
 
 courseRoute.get("/",getCourses)
 
-courseRoute.post("/",createCourses)
+courseRoute.post("/",protect,authorize('instructor','admin'),createCourses)
 
-courseRoute.get("/:id",(req,res)=>{
-
-})
-courseRoute.put("/:id",updateCourses)
-courseRoute.delete("/:id",deleteCourses)
+courseRoute.get("/:id",getCourseById)
+courseRoute.put("/:id",protect,authorize('instructor','admin'),updateCourses)
+courseRoute.delete("/:id",protect,authorize('instructor','admin'),deleteCourses)
 
 
 
